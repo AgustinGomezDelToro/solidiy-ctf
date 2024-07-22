@@ -1,14 +1,12 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity 0.8.0;
-
-import {Script, console} from "forge-std/Script.sol";
+pragma solidity ^0.8.0;
 
 interface Building {
     function isLastFloor(uint256) external returns (bool);
 }
 
 contract HackMeIfYouCan {
-    uint256 private constant FACTOR =
+    uint256 FACTOR =
     6275657625726723324896521676682367236752985978263786257989175917;
     address public owner;
     uint256 lastHash;
@@ -40,7 +38,6 @@ contract HackMeIfYouCan {
         require(msg.sender == owner, "Not Owner");
         unlocked = !unlocked;
     }
-
 
     function contribute() public payable whenUnlocked {
         require(msg.value < 0.001 ether, "Contribution too high");
@@ -143,10 +140,6 @@ contract HackMeIfYouCan {
             marks[msg.sender] += 3;
             alreadyCalled[msg.sender]["sendPassword"] = true;
         }
-    }
-
-    function getFactor() public pure returns (uint256) {
-        return FACTOR;
     }
 
     receive() external payable whenUnlocked {

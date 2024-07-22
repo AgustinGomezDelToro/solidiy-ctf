@@ -7,14 +7,14 @@ import "../src/HackMeIfYouCan.sol";
 
 contract CheckMarks is Script {
     function run() external {
-        // Dirección del contrato desplegado y tu wallet
+
         address payable contractAddress = payable(0x05492eA87Ee275De19B19f8229C65079Dfa07903);
         address myWallet = 0x351024A4EC50612C8D1CF70cd508F77f37Da53F8;
 
-        // Inicializa el contrato
+
         HackMeIfYouCan hackMe = HackMeIfYouCan(contractAddress);
 
-        // Verifica los marks y otros estados relevantes
+
         uint256 marks = hackMe.getMarks(myWallet);
         uint256 contributions = hackMe.getContribution();
         uint256 consecutiveWins = hackMe.getConsecutiveWins(myWallet);
