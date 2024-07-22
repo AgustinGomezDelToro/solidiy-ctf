@@ -2,5 +2,7 @@
 src = "src"
 out = "out"
 libs = ["lib"]
-
+rpc_url = "http://127.0.0.1:8545"  # Usando una RPC local para pruebas
+private_key = "${PRIVATE_KEY}"
+solc_version = "0.8.0"
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

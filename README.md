@@ -1,17 +1,33 @@
-## Foundry
+# HackMeIfYouCan
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Tests Réussis
 
-Foundry consists of:
+### \`testInitialOwner()\`
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- **Description:** Vérifie que le propriétaire initial du contrat est celui qui déploie le contrat.
+- **Résultat:** PASSED
 
-## Documentation
 
-https://book.getfoundry.sh/
+### \`testContribute()\`
+
+- **Description:** Vérifie que les utilisateurs peuvent contribuer avec un montant inférieur à 0.001 ether.
+- **Résultat:** PASSED
+
+
+### \`testFlip()\`
+
+- **Description:** Vérifie le fonctionnement du jeu de pile ou face.
+- **Résultat:** PASSED
+
+
+### \`testSendPassword()\`
+
+- **Description:** Vérifie que la fonction \`sendPassword\` ajoute des marques si le mot de passe est correct.
+- **Résultat:** PASSED
+
+
+EOL
+
 
 ## Usage
 
@@ -27,40 +43,12 @@ $ forge build
 $ forge test
 ```
 
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
 
 ### Deploy
 
 ```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+forge script script/DeployHackMeIfYouCan.s.sol:DeployHackMeIfYouCan --rpc-url https://sepolia.infura.io/v3/<tonaddresalinfura>
+ --private-key <taprivatekey> 
+ ```
 
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+address: 0x351024A4EC50612C8D1CF70cd508F77f37Da53F8
